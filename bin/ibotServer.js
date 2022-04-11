@@ -41,7 +41,7 @@ if (process.argv.length < 3) {
 const ownPath = process.cwd();
 const folderName = process.argv[2];
 const appPath = path.join(ownPath, folderName);
-const repo = 'https://github.com/hagopj13/node-express-boilerplate.git';
+const repo = 'https://github.com/vvaleron/ibot-express-mongoose.git';
 
 // Check if directory already exists
 try {
@@ -85,10 +85,7 @@ async function setup() {
     await runCmd('npx rimraf ./.git');
 
     // Remove extra files
-    fs.unlinkSync(path.join(appPath, 'CHANGELOG.md'));
-    fs.unlinkSync(path.join(appPath, 'CODE_OF_CONDUCT.md'));
-    fs.unlinkSync(path.join(appPath, 'CONTRIBUTING.md'));
-    fs.unlinkSync(path.join(appPath, 'bin', 'createNodejsApp.js'));
+    fs.unlinkSync(path.join(appPath, 'bin', 'ibotServer.js'));
     fs.rmdirSync(path.join(appPath, 'bin'));
     if (!useYarn) {
       fs.unlinkSync(path.join(appPath, 'yarn.lock'));
@@ -101,7 +98,7 @@ async function setup() {
     console.log(`    cd ${folderName}`);
     console.log(useYarn ? '    yarn dev' : '    npm run dev');
     console.log();
-    console.log('Enjoy your production-ready Node.js app, which already supports a large number of ready-made features!');
+    console.log('Enjoy your production-ready ibot Server, which already supports a large number of ready-made features!');
     console.log('Check README.md for more info.');
   } catch (error) {
     console.log(error);
