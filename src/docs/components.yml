@@ -12,12 +12,58 @@ components:
           type: string
         role:
           type: string
-          enum: [user, admin]
+          enum: [ user, admin ]
       example:
         id: 5ebac534954b54139806c112
         email: fake@example.com
         name: fake name
         role: user
+
+    Device:
+      type: object
+      properties:
+        uuid:
+          type: string
+        userAgent:
+          type: string
+        email:
+          type: string
+          format: email
+        state:
+          type: object
+          properties:
+            online:
+              type: boolean
+            popup:
+              type: object
+              properties:
+                currentTab:
+                  type: string
+                allowedSites:
+                  type: []
+            execution:
+              type: object
+              properties:
+                isActive:
+                  type: boolean
+                currentStepId:
+                  type: string
+                activeTabId:
+                  type: string
+      example:
+        uuid: f04d7029-3115-448a-8938-eced3e166640
+        userAgent: regular mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, like gecko) chrome/100.0.4896.75 safari/537.36
+        email: fake@example.com
+        state:
+          online: true
+          popup:
+            currentTab: 16
+            allowedSites: [https://like4like.com/, https://youlikehits.com]
+          execution:
+            isActive: true
+            currentStepId: goToYoutubeEarnCredit
+            activeTabId: 16
+
 
     Token:
       type: object
